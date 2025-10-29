@@ -59,9 +59,9 @@
             margin-top: 50px;
             display: flex;
             align-items: center;
-        }
-        .contact > a:first-child {
-            margin-right: 390px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         .contact .social-icons {
             display: flex;
@@ -104,13 +104,26 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 30px;
+            width: 100%;
         }
         .comic img {
-            width: 800px;
-            height: 180px;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
             border-radius: 0%;
             margin: 0;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .comic img {
+                max-height: none;
+            }
+            .contact {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
     </style>
@@ -144,7 +157,11 @@
     </div>
 
     <div class="comic">
-        <img src="peanuts.png" alt="comic peanuts">
+        <picture>
+            <source media="(max-width: 768px)" srcset="peanuts-mobile.png">
+            <source media="(min-width: 769px)" srcset="peanuts.png">
+            <img src="peanuts.png" alt="comic peanuts">
+        </picture>
     </div>
 
     <div class="contact">
